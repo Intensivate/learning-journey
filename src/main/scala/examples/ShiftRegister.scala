@@ -1,16 +1,16 @@
 // See LICENSE.txt for license details.
 package examples
 
-import chisel3._
+import Chisel._
 
-class ShiftRegister extends Module {
-  val io = IO(new Bundle {
-    val in  = Input(UInt(1.W))
-    val out = Output(UInt(1.W))
-  })
-  val r0 = RegNext(io.in)
-  val r1 = RegNext(r0)
-  val r2 = RegNext(r1)
-  val r3 = RegNext(r2)
-  io.out := r3
+class ShiftRegister extends Module { 
+  val io = new Bundle { 
+    val in  = UInt(INPUT, 1) 
+    val out = UInt(OUTPUT, 1) 
+  } 
+  val r0 = Reg(next = io.in) 
+  val r1 = Reg(next = r0) 
+  val r2 = Reg(next = r1) 
+  val r3 = Reg(next = r2) 
+  io.out := r3 
 }
