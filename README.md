@@ -7,3 +7,25 @@ Welcome to the Chisel Learning Journey!
 This Journey is built around the examples provided by the creators of Chisel, within their [tutorial](https://github.com/ucb-bar/chisel-tutorial).
 
 However, ...
+
+Please clone the Learning Journey:
+
+```
+git clone https://github.com/apaj/learning-journey.git
+```
+
+then change the directory:
+
+```
+cd learning-journey
+```
+
+and run the script that sets everythin up for you:
+
+```
+sudo ./set-learning-journey
+```
+
+and follow along simple instructions.
+
+Once the script is finished, please embark on the [Chisel Learning Journey](https://github.com/librecores/riscv-sodor/wiki).
