@@ -7,7 +7,9 @@
 # January 3rd, 2018	- adjusting verilator installation
 #			- adjusting permissions automatically
 #
-# January 20th, 2016	- adapting the script to the learning-journey repo
+# January 20th, 2018	- adapting the script to the learning-journey repo
+#
+# January 21st, 2018	- correcting the chown issue
 #
 # Aleksandar Pajkanovic
 # aleksandar [dot] pajkanovic [at] gmail [dot] com
@@ -52,7 +54,7 @@ do
 	esac
 done
 
-export LJHOME=$pwd
+export LJHOME=$PWD
 echo "Home of Learning Journey set in \$LJHOME"
 
 # Check for dependencies and install those that are missing
