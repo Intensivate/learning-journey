@@ -36,18 +36,18 @@ class BasicALU extends Module {
 }
 
 class SimpleALU extends Module {
-  val io = IO(new Bundle {
-    val a      = Input(UInt(4.W))
-    val b      = Input(UInt(4.W))
-    val opcode = Input(UInt(2.W))
-    val out = Output(UInt(4.W))
-  })
-  io.out := 0.U
-  when (io.opcode === 0.U) {
+  val io = new Bundle {
+    val a      = UInt(INPUT,  4)
+    val b      = UInt(INPUT,  4)
+    val opcode = UInt(INPUT,  2)
+    val out = UInt(OUTPUT, 4)
+  }
+  io.out := UInt(0) 
+  when (io.opcode === UInt(0)) {
     io.out := io.a + io.b //ADD
-  } .elsewhen (io.opcode === 1.U) {
+  } .elsewhen (io.opcode === UInt(1)) {
     io.out := io.a - io.b //SUB
-  } .elsewhen (io.opcode === 2.U) {
+  } .elsewhen (io.opcode === UInt(2)) {
     io.out := io.a  	     //PASS A
   } .otherwise {
     io.out := io.b        //PASS B
