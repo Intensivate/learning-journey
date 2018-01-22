@@ -1,18 +1,18 @@
 // See LICENSE.txt for license details.
-// January 22nd, 2018	- adapting to Learning Journey
 package examples
 
-import Chisel._
+import chisel3._
+import chisel3.util._
 
 //A 4-bit adder with carry in and carry out
 class Adder4 extends Module {
-  val io = new Bundle {
-    val A    = UInt(INPUT, 4)
-    val B    = UInt(INPUT, 4)
-    val Cin  = UInt(INPUT, 1)
-    val Sum  = UInt(OUTPUT, 4)
-    val Cout = UInt(OUTPUT, 1)
-  }
+  val io = IO(new Bundle {
+    val A    = Input(UInt(4.W))
+    val B    = Input(UInt(4.W))
+    val Cin  = Input(UInt(1.W))
+    val Sum  = Output(UInt(4.W))
+    val Cout = Output(UInt(1.W))
+  })
   //Adder for bit 0
   val Adder0 = Module(new FullAdder())
   Adder0.io.a := io.A(0)
@@ -36,6 +36,6 @@ class Adder4 extends Module {
   Adder3.io.a := io.A(3)
   Adder3.io.b := io.B(3)
   Adder3.io.cin := Adder2.io.cout
-  io.Sum := Cat(Adder3.io.sum, s2).toUInt()
+  io.Sum := Cat(Adder3.io.sum, s2).asUInt
   io.Cout := Adder3.io.cout
 }
