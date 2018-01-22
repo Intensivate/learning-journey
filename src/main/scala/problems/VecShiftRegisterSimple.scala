@@ -1,25 +1,20 @@
 // See LICENSE.txt for license details.
+// January 22nd, 2018	- adapting to Learnin Journey
 package problems
 
-import chisel3._
+import Chisel._
 
 // Problem:
 //
 // Implement a shift register with four 8-bit stages.
 // Shift should occur on every clock.
 //
-class VecShiftRegisterSimple extends Module {
-  val io = IO(new Bundle {
-    val in  = Input(UInt(8.W))
-    val out = Output(UInt(8.W))
-  })
-
-  val initValues = Seq.fill(4) { 0.U(8.W) }
-  val delays = RegInit(Vec(initValues))
-
-  // Implement below ----------
-
-  io.out := 0.U
-
-  // Implement above ----------
+class VecShiftRegisterSimple extends Module { 
+  val io = new Bundle { 
+    val in  = UInt(INPUT,  8) 
+    val out = UInt(OUTPUT, 8) 
+  } 
+  val delays = Vec.fill(4){ Reg(UInt(width = 8)) } 
+  ... 
+  io.out := UInt(0) 
 }

@@ -3,7 +3,6 @@
 package solutions
 
 import Chisel._
-import Chisel.util.Cat
 
 // Problem:
 //

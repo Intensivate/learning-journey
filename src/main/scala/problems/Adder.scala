@@ -1,7 +1,8 @@
 // See LICENSE.txt for license details.
+// January 22nd, 2018	- Adapted to Learning Journey
 package problems
 
-import chisel3._
+import Chisel._
 
 // Problem:
 //
@@ -9,13 +10,12 @@ import chisel3._
 // Adder width should be parametrized
 //
 // Implement below ----------
-class Adder(val w: Int) extends Module {
-  val io = IO(new Bundle {
-    val in0 = Input(UInt(1.W))
-    val in1 = Input(UInt(1.W))
-    val out = Output(UInt(1.W))
-  })
-
-  io.out := 0.U
+class Adder(val w: Int) extends Module { 
+  val io = new Bundle { 
+    val in0 = UInt(INPUT,  1) 
+    val in1 = UInt(INPUT,  1) 
+    val out = UInt(OUTPUT, 1) 
+  } 
+  ... 
+  io.out := UInt(0) 
 }
-// Implement above ----------

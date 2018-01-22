@@ -1,7 +1,8 @@
 // See LICENSE.txt for license details.
+// January 22nd, 2018	- adapting to Learning Journey
 package solutions
 
-import chisel3._
+import Chisel._
 
 // Problem:
 //
@@ -9,14 +10,11 @@ import chisel3._
 // Shift should occur on every clock.
 //
 class VecShiftRegisterSimple extends Module {
-  val io = IO(new Bundle {
-    val in  = Input(UInt(8.W))
-    val out = Output(UInt(8.W))
-  })
-
-  val initValues = Seq.fill(4) { 0.U(8.W) }
-  val delays = RegInit(Vec(initValues))
-
+  val io = new Bundle {
+    val in  = UInt(INPUT,  8)
+    val out = UInt(OUTPUT, 8)
+  }
+  val delays = Reg(init = Vec(4, UInt(0, width = 8)))
   delays(0) := io.in
   delays(1) := delays(0)
   delays(2) := delays(1)
