@@ -20,7 +20,7 @@ then change the directory:
 cd learning-journey
 ```
 
-and run the script that sets everythin up for you:
+and run the script that sets everything up for you:
 
 ```
 sudo ./set-learning-journey
