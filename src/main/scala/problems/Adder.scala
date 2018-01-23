@@ -16,6 +16,6 @@ class Adder(val w: Int) extends Module {
     val in1 = UInt(INPUT,  1) 
     val out = UInt(OUTPUT, 1) 
   } 
-  ... 
+//  ... 
   io.out := UInt(0) 
 }
