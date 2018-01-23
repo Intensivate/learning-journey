@@ -1,4 +1,4 @@
-/ See LICENSE.txt for license details.
+// See LICENSE.txt for license details.
 // January 23rd, 2018   - Adapting to Learning Journey
 package examples
 
