@@ -3,6 +3,7 @@
 package examples
 
 import Chisel._
+import chisel3.core.VecInit
 
 //A n-bit adder with carry in and carry out
 class Adder(val n:Int) extends Module {
@@ -14,7 +15,7 @@ class Adder(val n:Int) extends Module {
     val Cout = UInt(OUTPUT, 1)
   }
   //create a vector of FullAdders
-  val FAs   = Vec(Seq.fill(n)(Module(new FullAdder()).io))
+  val FAs   = VecInit(Seq.fill(n)(Module(new FullAdder()).io))
   val carry = Wire(Vec(n+1, UInt(width = 1)))
   val sum   = Wire(Vec(n, Bool()))
 
@@ -29,7 +30,7 @@ class Adder(val n:Int) extends Module {
     carry(i+1) := FAs(i).cout
     sum(i) := FAs(i).sum.toBool()
   }
-  io.Sum := sum.toBits.asUInt()
+  io.Sum := sum.asUInt()
   io.Cout := carry(n)
 }
 
