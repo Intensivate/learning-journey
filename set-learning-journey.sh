@@ -11,6 +11,8 @@
 #
 # January 21st, 2018	- correcting the chown issue
 #
+# February 2nd, 2018	- added generator-bootcamp
+#
 # Aleksandar Pajkanovic
 # aleksandar [dot] pajkanovic [at] gmail [dot] com
 
@@ -55,6 +57,7 @@ do
 done
 
 export LJHOME=$PWD
+echo "export LJHOME=$PWD >> ~/.bashrc"
 echo "Home of Learning Journey set in \$LJHOME"
 
 # Check for dependencies and install those that are missing
@@ -133,6 +136,31 @@ make install
 
 cd $LJHOME
 
+# install prerequisites for generator-bootcamp
+if [ `dpkg-query -l | grep python | wc -l` -eq 0 ]
+then
+	echo "python not present, installing..."
+	apt-get install python python3-pip python3-setuptools
+	echo "bison installed"
+else
+	echo "bison already present"
+fi
+
+# installing jupyter
+pip3 install --upgrade pip
+pip3 install jupyter
+
+# installing jupyter-scala
+git clone https://github.com/jupyter-scala/jupyter-scala.git
+cd jupyter-scala && ./jupyter-scala
+
+# setting up the Chisel Jupyter Notebook
+cd generator-bootcamp
+mkdir -p ~/.jupyter/custom
+cp source/custom.js ~/.jupyter/custom/custom.js
+
+
+
 export current_user=`who | awk '{print $1}'`
 chown -R $current_user:$current_user $LJHOME
 
@@ -145,5 +173,9 @@ echo "
 	https://github.com/librecores/riscv-sodor/wiki/Setting-up-Chisel#testing-your-system
 
 	for instructions on how to test your system and to find out what is your first step.
+
+	Once you've passed through those Wiki pages, please run:
+
+		cd $LJHOME/generator-bootcamp && jupyter notebook
 				"
 
