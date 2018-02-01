@@ -56,8 +56,13 @@ do
 	esac
 done
 
+
+export current_user=`who | awk '{print $1}'`
+
 export LJHOME=$PWD
-echo "export LJHOME=$PWD >> ~/.bashrc"
+
+echo "export LJHOME=$PWD" >> /home/$current_user/.bashrc
+
 echo "Home of Learning Journey set in \$LJHOME"
 
 # Check for dependencies and install those that are missing
@@ -141,9 +146,9 @@ if [ `dpkg-query -l | grep python | wc -l` -eq 0 ]
 then
 	echo "python not present, installing..."
 	apt-get install python python3-pip python3-setuptools
-	echo "bison installed"
+	echo "python installed"
 else
-	echo "bison already present"
+	echo "python already present"
 fi
 
 # installing jupyter
@@ -153,15 +158,14 @@ pip3 install jupyter
 # installing jupyter-scala
 git clone https://github.com/jupyter-scala/jupyter-scala.git
 cd jupyter-scala && ./jupyter-scala
+cd $LJHOME
 
 # setting up the Chisel Jupyter Notebook
 cd generator-bootcamp
 mkdir -p ~/.jupyter/custom
 cp source/custom.js ~/.jupyter/custom/custom.js
+cd $LJHOME
 
-
-
-export current_user=`who | awk '{print $1}'`
 chown -R $current_user:$current_user $LJHOME
 
 # Installations finished, just give some instructions
@@ -176,6 +180,6 @@ echo "
 
 	Once you've passed through those Wiki pages, please run:
 
-		cd $LJHOME/generator-bootcamp && jupyter notebook
+		cd \$LJHOME/generator-bootcamp && jupyter notebook
 				"
 
