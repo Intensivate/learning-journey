@@ -6,8 +6,6 @@ Welcome to the Chisel Learning Journey!
 
 This Journey is built around the examples provided by the creators of Chisel, within their [tutorial](https://github.com/ucb-bar/chisel-tutorial).
 
-However, ...
-
 Please clone the Learning Journey:
 
 ```

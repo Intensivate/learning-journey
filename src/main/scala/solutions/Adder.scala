@@ -1,8 +1,7 @@
 // See LICENSE.txt for license details.
-// January 22nd, 2018	- Adapted to Learning Joruney
 package solutions
 
-import Chisel._
+import chisel3._
 
 // Problem:
 //
@@ -10,10 +9,10 @@ import Chisel._
 // Adder width should be parametrized
 //
 class Adder(val w: Int) extends Module {
-  val io = new Bundle {
-    val in0 = UInt(INPUT,  w)
-    val in1 = UInt(INPUT,  w)
-    val out = UInt(OUTPUT, w)
-  }
+  val io = IO(new Bundle {
+    val in0 = Input(UInt(w.W))
+    val in1 = Input(UInt(w.W))
+    val out = Output(UInt(w.W))
+  })
   io.out := io.in0 + io.in1
 }

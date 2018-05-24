@@ -2,3 +2,5 @@
 *.inProgress
 *.modComents
 *.commented
+*.chisel2
+rename.sh

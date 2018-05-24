@@ -1,22 +1,23 @@
 // See LICENSE.txt for license details.
-// January 23rd, 2018   - Adapting to Learning Journey
 package examples
 
-import Chisel._
-import chisel3.core.VecInit
+import chisel3._
 
 //A n-bit adder with carry in and carry out
 class Adder(val n:Int) extends Module {
-  val io = new Bundle {
-    val A    = UInt(INPUT, n)
-    val B    = UInt(INPUT, n)
-    val Cin  = UInt(INPUT, 1)
-    val Sum  = UInt(OUTPUT, n)
-    val Cout = UInt(OUTPUT, 1)
-  }
-  //create a vector of FullAdders
-  val FAs   = VecInit(Seq.fill(n)(Module(new FullAdder()).io))
-  val carry = Wire(Vec(n+1, UInt(width = 1)))
+  val io = IO(new Bundle {
+    val A    = Input(UInt(n.W))
+    val B    = Input(UInt(n.W))
+    val Cin  = Input(UInt(1.W))
+    val Sum  = Output(UInt(n.W))
+    val Cout = Output(UInt(1.W))
+  })
+  //create an Array of FullAdders
+  //  NOTE: Since we do all the wiring during elaboration and not at run-time,
+  //  i.e., we don't need to dynamically index into the data structure at run-time,
+  //  we use an Array instead of a Vec.
+  val FAs   = Array.fill(n)(Module(new FullAdder()).io)
+  val carry = Wire(Vec(n+1, UInt(1.W)))
   val sum   = Wire(Vec(n, Bool()))
 
   //first carry is the top level carry in
@@ -30,7 +31,6 @@ class Adder(val n:Int) extends Module {
     carry(i+1) := FAs(i).cout
     sum(i) := FAs(i).sum.toBool()
   }
-  io.Sum := sum.asUInt()
+  io.Sum := sum.asUInt
   io.Cout := carry(n)
 }
-
