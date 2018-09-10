@@ -3,4 +3,5 @@
 *.modComents
 *.commented
 *.chisel2
+test_run_dir/*
 rename.sh

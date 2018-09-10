@@ -26,7 +26,7 @@ echo "	Welcome to the Chisel Learning Journey!
 	recommended OS for the Learning Journey. For details on how to prepare
 	the virtual machine, please visit:
 
-	https://github.com/librecores/riscv-sodor/wiki/Chisel-Environment 
+	https://github.com/Intensivate/learning-journey/wiki/Chisel-Environment 
 
 	In case you are not running Mint nor any other Ubuntu-like OS, we
 	advise you to abort running this script.
@@ -174,7 +174,7 @@ echo "
 
 	Please visit:
 
-	https://github.com/librecores/riscv-sodor/wiki/Setting-up-Chisel#testing-your-system
+	https://github.com/Intensivate/learning-journey/wiki/Setting-up-Chisel#testing-your-system
 
 	for instructions on how to test your system and to find out what is your first step.
 
