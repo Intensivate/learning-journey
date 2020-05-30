@@ -145,7 +145,7 @@ cd $LJHOME
 if [ `dpkg-query -l | grep python | wc -l` -eq 0 ]
 then
 	echo "python not present, installing..."
-	apt-get install python python3-pip python3-setuptools
+	apt-get install python3 python3-pip python3-setuptools
 	echo "python installed"
 else
 	echo "python already present"
@@ -153,15 +153,24 @@ fi
 
 # installing jupyter
 pip3 install --upgrade pip
-pip3 install jupyter
+pip3 install jupyter --ignore-installed
+pip3 install jupyterlab
 
 # installing jupyter-scala
-git clone https://github.com/jupyter-scala/jupyter-scala.git
-cd jupyter-scala && ./jupyter-scala
+rm -rf ~/.local/share/jupyter/kernels/scala/
+curl -L -o coursier https://git.io/coursier-cli && chmod +x coursier
+SCALA_VERSION=2.12.10 ALMOND_VERSION=0.9.1
+./coursier bootstrap -r jitpack \
+    -i user -I user:sh.almond:scala-kernel-api_$SCALA_VERSION:$ALMOND_VERSION \
+    sh.almond:scala-kernel_$SCALA_VERSION:$ALMOND_VERSION \
+    --sources --default=true \
+    -o almond
+./almond --install
 cd $LJHOME
 
-# setting up the Chisel Jupyter Notebook
-cd generator-bootcamp
+# get chisel-bootcamp:
+git clone https://github.com/freechipsproject/chisel-bootcamp.git
+cd chisel-bootcamp
 mkdir -p ~/.jupyter/custom
 cp source/custom.js ~/.jupyter/custom/custom.js
 cd $LJHOME
