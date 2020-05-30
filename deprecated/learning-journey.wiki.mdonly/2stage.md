@@ -1,0 +1,1 @@
+[Click Here](https://www.draw.io/?title=2stage.xml&url=https://raw.githubusercontent.com/librecores/riscv-sodor/master/doc/2stage.xml) to edit this image in browser. Please submit a Pull Request if your modified xml represents more accurate information

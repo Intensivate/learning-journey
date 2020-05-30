@@ -1,0 +1,16 @@
+
+On the question of efficient generation of circuits from Chisel code:
+
+Q: the map function and other techniques generate long chains of gates like the following code:
+
+z=(x1 | (x2 | (x3 | (x4 | (x5 | ... | (xn-1 | xn)...)))))
+in this case generated verilog might be the following
+z := x1 || ( x2 || ( x3 || ( x4 || ( x5 || ... || (xn-1 || xn ) ... ))))
+Now, when the code is synthesized the generated gate might be simply a series of OR-gate chain as many as n-1 gates...
+I am not familiar with synthesis, but if this is what synthesis tool does, we should also consider the coding style better so that it won't generate unnecessarily long gate chains which might be causing long critical paths.
+Is there any discussions and/or suggestions as to what would be the better coding style for synthesis, or something like it...?
+Or, is synthesis nowadays smart enough to figure out & to reduce the logic...?
+
+A: 
+
+I have found that my synthesis tools (Yosys and Xilinx WebPACK ISE) render equations into truth tables, then performs extensive boolean algebraic identities to simplify the logic chains produced.  I can't speak if any ASIC tools do things this way, but at least for FPGAs, the difference between |{x1,x2,x3} and x1|x2|x3 should be negligable or non-existent.

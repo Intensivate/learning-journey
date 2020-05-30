@@ -1,0 +1,8 @@
+The essence of the learning journey is jumping in from zero, a guided experience, hand-holding, no effort and no thought on the part of the visitor.  No options, no choices, no menu, no independent thinking, no details to worry about.  Just fully taken care of steps, one by one, that guide you through, with all details (tools, directory structure, and so on) all taken care of, progressing from the basic idea of Chisel, through first simple syntax, and up through levels of complexity, until you're at the point that the reference materials make sense and you can read existing Chisel code, to continue on your own.  
+
+Our target is people who have strong experience with Verilog or VHDL, but now want to use Chisel.   they don’t want an academic course with exercises to fill out that covers all the different aspects.  They want the minimum get-me-writing-code experience.  They want  “I don’t have to think, don’t have to make any decisions, just follow the steps and it walks me through” experience.  They want the logistics taken care of, all details thought about, with focus on just the minimum critical bits that get them productive.
+
+Then, once they’ve gone through that, then the way opens up, as they progress to more advanced stuff.  Once they get to advanced, then Rocket comes into the picture, and various functional units, and advanced code concepts, and all that.
+
+### Next Step
+The Chisel [[Big Picture]].
