@@ -130,10 +130,9 @@ cd verilator
 
 unset VERILATOR_ROOT
 git pull
-git checkout verilator_3_904 
-# Version 3.904 is dated May 30th, 2017, however Chisel3 has issues with
-# more up-to-date versions. This is where the bug was reported and may be tracked:
-#	https://github.com/ucb-bar/chisel-tutorial/issues/111
+git checkout v4.016
+# Updated verilator version, as per Chisel github repo setup instructions:
+#		https://github.com/freechipsproject/chisel3/blob/master/SETUP.md
 autoconf # Create ./configure script
 ./configure
 make
