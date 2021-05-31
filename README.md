@@ -1,12 +1,12 @@
 # Chisel Learning Journey
 
-Welcome to the Chisel Learning Journey!
+Welcome to the repository that goes with the [Chisel Learning Journey](https://github.com/Intensivate/learning-journey/wiki)!
 
-[Chisel](https://github.com/freechipsproject/chisel3) is a hardware construction language that supports advanced hardware design and circuit generation.
+The [Chisel Learning Journey](https://github.com/Intensivate/learning-journey/wiki) is a step by step guide to learning the [Chisel](https://github.com/freechipsproject/chisel3) Hardware language.
 
 This Journey is built around the examples provided by the creators of Chisel, within their [tutorial](https://github.com/ucb-bar/chisel-tutorial).
 
-Please clone the Learning Journey:
+To clone this companion code:
 
 ```
 git clone https://github.com/apaj/learning-journey.git
