@@ -2,7 +2,9 @@
 
 Welcome to the repository that goes with the [Chisel Learning Journey](https://github.com/Intensivate/learning-journey/wiki)!
 
-The [Chisel Learning Journey](https://github.com/Intensivate/learning-journey/wiki) is a step by step guide to learning the [Chisel](https://github.com/freechipsproject/chisel3) Hardware language.
+Clone this repo, to get the example code discussed on the learning journey, and the practice problems.
+
+If you haven't yet, start go to the [Chisel Learning Journey](https://github.com/Intensivate/learning-journey/wiki), which is a step by step guide to learning the [Chisel](https://github.com/freechipsproject/chisel3) Hardware language.
 
 This Journey is built around the examples provided by the creators of Chisel, within their [tutorial](https://github.com/ucb-bar/chisel-tutorial).
 
